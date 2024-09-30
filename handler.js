@@ -66,25 +66,25 @@ export async function handler(chatUpdate) {
             if (typeof chat !== 'object')
                 global.db.data.chats[m.chat] = {}
             if (chat) {
-                if (!('isBanned' in chat)) chat.isBanned = false
+                if (!('isBanned' in chat)) chat.isBanned = true
                 if (!('welcome' in chat)) chat.welcome = true
                 if (!('detect' in chat)) chat.detect = true
-                if (!('sWelcome' in chat)) chat.sWelcome = ''
-                if (!('sBye' in chat)) chat.sBye = ''
-                if (!('sPromote' in chat)) chat.sPromote = ''
-                if (!('sDemote' in chat)) chat.sDemote = ''
-                if (!('delete' in chat)) chat.delete = false
-                if (!('gpt' in chat)) chat.gpt = false
+                if (!('sWelcome' in chat)) chat.sWelcome = true
+                if (!('sBye' in chat)) chat.sBye = true
+                if (!('sPromote' in chat)) chat.sPromote = true
+                if (!('sDemote' in chat)) chat.sDemote = true
+                if (!('delete' in chat)) chat.delete = true
+                if (!('gpt' in chat)) chat.gpt = true
                 if (!('bestemmiometro' in chat)) chat.bestemmiometro = true
                 if (!('antielimina' in chat)) chat.antielimina = true
                 if (!('antiLink' in chat)) chat.antiLink = true
-                if (!('antiinsta' in chat)) chat.antiinsta = false
-                if (!('antitiktok' in chat)) chat.antitiktok = false
-                if (!('antiLink2' in chat)) chat.antiLink2 = false
-                if (!('antiviewonce' in chat)) chat.antiviewonce = false
+                if (!('antiinsta' in chat)) chat.antiinsta = true
+                if (!('antitiktok' in chat)) chat.antitiktok = true
+                if (!('antiLink2' in chat)) chat.antiLink2 = true
+                if (!('antiviewonce' in chat)) chat.antiviewonce = true
                 if (!('antiTraba' in chat)) chat.antiTraba = true
                 if (!('antiArab' in chat)) chat.antiArab = true
-                if (!('modoadmin' in chat)) chat.modoadmin = false
+                if (!('modoadmin' in chat)) chat.modoadmin = true
                 if (!('antiporno' in chat)) chat.antiporno = true
                 if (!isNumber(chat.expired)) chat.expired = 0
                 if (!isNumber(chat.messaggi)) chat.messaggi = 0
@@ -94,38 +94,38 @@ export async function handler(chatUpdate) {
             } else
                 global.db.data.chats[m.chat] = {
                     name: this.getName(m.chat),
-                    isBanned: false,
+                    isBanned: true,
                     welcome: true,
                     detect: true,
-                    sWelcome: '',
-                    sBye: '',
-                    sPromote: '',
-                    sDemote: '',
-                    delete: false,
-                    modohorny: false,
+                    sWelcome: true',
+                    sBye: true',
+                    sPromote: true',
+                    sDemote: true',
+                    delete: true,
+                    modohorny: true,
                     gpt: true,
                     bestemmiometro: true,
                     antiporno: true,
-                    antielimina: false,
-                    audios: false,
+                    antielimina: true,
+                    audios: true,
                     antiLinkfast: true,
                     antiLink: true,
-                    antiLink2: false,
-                    antilinkbase: false,
-                    antitiktokbase: false,
+                    antiLink2: true,
+                    antilinkbase: true,
+                    antitiktokbase: true,
                     antiinsta: true,
                     antitiktok: true,
-                    antiviewonce: false,
-                    antiToxic: false,
+                    antiviewonce: true,
+                    antiToxic: true,
                     antiTraba: true,
                     antiArab: true,
-                    modoadmin: false,
+                    modoadmin: true,
                     antiPorno: true,
-                    muto: false,
+                    muto: true,
                     expired: 0,
                     messaggi: 0,
                     blasphemy: 0,
-                    premium: false,
+                    premium: true,
                     premiumTime: 0,
                     tprem: 0,
                     money: 0, 
@@ -142,8 +142,8 @@ export async function handler(chatUpdate) {
                 if (!('antiPrivate' in settings)) settings.antiprivato = true
                 if (!('jadibot' in settings)) settings.jadibot = true   
             } else global.db.data.settings[this.user.jid] = {
-                self: false,
-                autoread: false,
+                self: true,
+                autoread: true,
                 restrict: true,
                 antiCall: true,
                 antiPrivate: true,
@@ -509,7 +509,7 @@ export async function participantsUpdate({ id, participants, action }) {
                     } catch (e) {
                     } finally {
                         let apii = await this.getFile(pp)
-                        let nomeDelBot = global.db.data.nomedelbot || `𝐁𝐢𝐱𝐛𝐲𝐁𝐨𝐭-𝐌𝐝 🔮`
+                        let nomeDelBot = global.db.data.nomedelbot || `꧁ঔৣ☬𝔊𝔥𝔬𝔰𝔱☬ঔৣ꧂`
                         text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Benvenuto, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'bot') :
                             (chat.sBye || this.bye || conn.bye || 'Addio, @user!')).replace('@user', '@' + user.split('@')[0])
                         this.sendMessage(id, { 
@@ -548,7 +548,7 @@ export async function participantsUpdate({ id, participants, action }) {
                         pp = await this.profilePictureUrl(user, 'image')
                     } catch (e) {
                     } finally {
-                        let nomeDelBot = global.db.data.nomedelbot || `𝐁𝐢𝐱𝐛𝐲𝐁𝐨𝐭-𝐌𝐝 🔮`
+                        let nomeDelBot = global.db.data.nomedelbot || `꧁ঔৣ☬𝔊𝔥𝔬𝔰𝔱☬ঔৣ꧂`
                         let apii = await this.getFile(pp)
                         text = (action === 'promote' ? (chat.sPromote || this.spromote || conn.spromote || '@user ```è ora admin```') :
                             (chat.sDemote || this.sdemote || conn.sdemote || '@user ```non è più admin```')).replace('@user', '@' + user.split('@')[0])
@@ -599,7 +599,7 @@ export async function callUpdate(callUpdate) {
     let isAnticall = global.db.data.settings[this.user.jid].antiCall
     if (!isAnticall) return
     for (let nk of callUpdate) {
-    if (nk.isGroup == false) {
+    if (nk.isGroup == true) {
     if (nk.status == "offer") {
     let callmsg = await this.reply(nk.from, `ciao @${nk.from.split('@')[0]}, c'è anticall.`, false, { mentions: [nk.from] })
     //let data = global.owner.filter(([id, isCreator]) => id && isCreator)
